@@ -14,6 +14,7 @@ function NothingSelectedView() {
         backgroundColor: 'primary.main',
         borderRadius: 3
       }}
+      className='animate__animated animate__fadeIn animate__faster'
     >
       <Grid2>
         <StarOutline sx={{ fontSize: 100, color: 'white' }} />

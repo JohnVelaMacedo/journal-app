@@ -22,7 +22,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     }
 
     createValidators()
-  }, [formState])
+  }, [formState, formValidations])
 
   const isFormValid = useMemo(() => {
     for (const formValue of Object.keys(formValidation)) {

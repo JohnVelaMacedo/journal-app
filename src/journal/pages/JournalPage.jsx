@@ -1,7 +1,5 @@
-import { AddOutlined } from '@mui/icons-material'
-import { IconButton } from '@mui/material'
 import JournalLayout from '../layout/JournalLayout'
-import NoteView from '../views/NoteView'
+import NothingSelectedView from '../views/NothingSelectedView'
 
 function JournalPage() {
   return (
@@ -24,9 +22,9 @@ function JournalPage() {
         dolore commodi atque labore eveniet unde quidem ad nostrum.
       </Typography> */}
 
-      {/* <NothingSelectedView /> */}
+      <NothingSelectedView />
 
-      <NoteView />
+      {/* <NoteView />
 
       <IconButton
         size='large'
@@ -40,7 +38,7 @@ function JournalPage() {
         }}
       >
         <AddOutlined sx={{ fontSize: 30 }} />
-      </IconButton>
+      </IconButton> */}
     </JournalLayout>
   )
 }

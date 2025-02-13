@@ -54,6 +54,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
   return async (dispatch) => {
     dispatch(checkingCredentials())
 
-    await loginWithEmailPassword({ email, password })
+    const result = await loginWithEmailPassword({ email, password })
+    !result.ok ? dispatch(logout(result)) : dispatch(login(result))
   }
 }

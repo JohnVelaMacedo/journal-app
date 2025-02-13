@@ -25,7 +25,6 @@ export const journalSlice = createSlice({
     },
     setActiveNote: (state, action) => {
       state.active = action.payload
-      console.log(action.payload)
     },
     setNotes: (state, action) => {
       state.notes = action.payload

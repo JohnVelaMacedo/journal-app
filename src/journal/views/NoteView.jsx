@@ -132,7 +132,7 @@ function NoteView() {
         />
       </Grid2>
 
-      <ImageGallery />
+      <ImageGallery images={note.imageUrls} />
     </Grid2>
   )
 }

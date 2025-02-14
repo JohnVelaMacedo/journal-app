@@ -23,8 +23,8 @@ const formData = {
 }
 
 function LoginPage() {
-  const { status, errorMessage } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+  const { status, errorMessage } = useSelector((state) => state.auth)
   const { email, password, onInputChange } = useForm(formData)
   const isAuthenticating = useMemo(
     () => status === 'checking',
@@ -37,7 +37,6 @@ function LoginPage() {
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn')
     dispatch(startGoogleSignIn())
   }
 

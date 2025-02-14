@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+import { getEnvironments } from '../helpers/getEnvironments'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,7 +15,7 @@ const {
   VITE_FIREBASE_STORAGE_BUCKET,
   VITE_FIREBASE_MESSAGING_SENDER_ID,
   VITE_FIREBASE_APP_ID
-} = import.meta.env
+} = getEnvironments()
 
 const firebaseConfig = {
   apiKey: VITE_FIREBASE_API_KEY,

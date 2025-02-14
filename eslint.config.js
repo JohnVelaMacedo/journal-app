@@ -35,5 +35,10 @@ export default [
       ],
       'react/prop-types': 'off'
     }
+  },
+  {
+    env: {
+      jest: true
+    }
   }
 ]

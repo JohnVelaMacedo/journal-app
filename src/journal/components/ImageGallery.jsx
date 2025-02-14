@@ -7,7 +7,7 @@ function ImageGallery({ images }) {
       cols={4}
       rowHeight={200}
     >
-      {images.map((image) => (
+      {images?.map((image) => (
         <ImageListItem key={image}>
           <img
             srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}

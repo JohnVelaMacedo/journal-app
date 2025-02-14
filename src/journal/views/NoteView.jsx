@@ -1,18 +1,43 @@
 import { SaveOutlined } from '@mui/icons-material'
 import { Button, Grid2, TextField, Typography } from '@mui/material'
-import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
+// import 'sweetalert2/dist/sweetalert2.css'
 import { useForm } from '../../hooks/useForm'
+import { setActiveNote } from '../../store/journal/journalSlice'
+import { startSaveNotes } from '../../store/journal/thunks'
 import ImageGallery from '../components/ImageGallery'
 
 function NoteView() {
-  const { active: note } = useSelector((state) => state.journal)
+  const dispatch = useDispatch()
+  const {
+    active: note,
+    messageSaved,
+    isSaving
+  } = useSelector((state) => state.journal)
   const { body, title, formState, date, onInputChange } =
     useForm(note)
   const dateString = useMemo(() => {
     const newDate = new Date(date)
     return newDate.toUTCString()
   }, [date])
+
+  useEffect(() => {
+    dispatch(setActiveNote(formState))
+  }, [formState, dispatch])
+
+  useEffect(() => {
+    if (messageSaved.length > 0) {
+      Swal.fire('Nota actualizada', messageSaved, 'success')
+    }
+  }, [messageSaved])
+
+  const onSaveNote = () => {
+    dispatch(startSaveNotes())
+  }
+
+  const onFileInputChange = () => {}
 
   return (
     <Grid2
@@ -33,9 +58,17 @@ function NoteView() {
       </Grid2>
 
       <Grid2>
+        <input
+          type='file'
+          multiple
+          onChange={onFileInputChange}
+        />
+
         <Button
           color='primary'
           sx={{ padding: 2 }}
+          onClick={onSaveNote}
+          disabled={isSaving}
         >
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
           Guardar

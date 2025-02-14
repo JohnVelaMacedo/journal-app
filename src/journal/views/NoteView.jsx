@@ -12,7 +12,10 @@ import Swal from 'sweetalert2'
 // import 'sweetalert2/dist/sweetalert2.css'
 import { useForm } from '../../hooks/useForm'
 import { setActiveNote } from '../../store/journal/journalSlice'
-import { startSaveNotes } from '../../store/journal/thunks'
+import {
+  startSaveNotes,
+  startUploadingFiles
+} from '../../store/journal/thunks'
 import ImageGallery from '../components/ImageGallery'
 
 function NoteView() {
@@ -51,8 +54,7 @@ function NoteView() {
     if (target.files.length === 0) {
       return
     }
-    console.log('Subiendo archivos')
-    // dispatch(startUploadingFiles(target.files))
+    dispatch(startUploadingFiles(target.files))
   }
 
   return (

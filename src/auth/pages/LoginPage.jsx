@@ -43,6 +43,7 @@ function LoginPage() {
   return (
     <AuthLayout title='Login'>
       <form
+        aria-label='submit-form'
         onSubmit={onSubmit}
         className='animate__animated animate__fadeIn animate__faster'
       >
@@ -76,6 +77,7 @@ function LoginPage() {
               fullWidth
               name='password'
               value={password}
+              inputProps={{ 'data-testid': 'password' }}
               onChange={onInputChange}
             />
           </Grid2>
@@ -110,6 +112,7 @@ function LoginPage() {
                 type='button'
                 onClick={onGoogleSignIn}
                 disabled={isAuthenticating}
+                aria-label='google-btn'
               >
                 <Google />
 
